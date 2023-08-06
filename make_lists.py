@@ -56,18 +56,7 @@ list_rs = f"""use super::types::*;
 
 blocks! {{
     {(n+indent).join([
-        f'"minecraft:{name}", {pascal(name)}'
-        + (
-            ''
-            if not props
-            else (
-                ' - ' + ', '.join([
-                    f'{prop if prop != "type" else "r#type"}: {_type}'
-                    + (f' as "{prop}"' if prop == 'type' else '')
-                    for prop, _type in props
-                ])
-            )
-        ) + ';'
+        f'"minecraft:{name}", {pascal(name)};'
         for name, props in blocks.items()
     ])}
 }}
